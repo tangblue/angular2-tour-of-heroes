@@ -8,7 +8,8 @@ import { Component } from '@angular/core';
     <div class="header-bar"></div>
     <nav>
       <a routerLink="/dashboard" routerLinkActive="active">Dashboard</a>
-      <a routerLink="/heroes" routerLinkActive="active">Heroes</a>
+      <a [routerLink]="['/heroes', {outlets: {'matches': ['1']}}]" routerLinkActive="active">Heroes</a>
+      <a routerLink="/matches" routerLinkActive="active">Matches</a>
     </nav>
     <router-outlet></router-outlet>
   `,

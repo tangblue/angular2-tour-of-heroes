@@ -1,0 +1,19 @@
+<h2>My Matches</h2>
+<ul class="matches">
+  <li *ngFor="let match of matches" (click)="onSelect(match)" [class.selected]="match === selectedMatch">
+    <span class="match-element">
+      <span class="badge">{{match.id}}</span> {{match.name}}
+    </span>
+    <button class="delete-button" (click)="deleteMatch(match, $event)">Delete</button>
+  </li>
+</ul>
+
+<div class="error" *ngIf="error">{{error}}</div>
+<button (click)="addMatch()">Add New Match</button>
+
+<div *ngIf="selectedMatch">
+  <h2>
+    {{selectedMatch.name | uppercase}} is my match
+  </h2>
+  <button (click)="gotoDetail()">View Details</button>
+</div>

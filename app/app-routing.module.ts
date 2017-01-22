@@ -3,6 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 
 import { DashboardComponent } from './dashboard.component';
 import { HeroesComponent } from './heroes.component';
+import { MatchesComponent } from './matches.component';
 import { HeroDetailComponent } from './hero-detail.component';
 
 const routes: Routes = [
@@ -21,7 +22,18 @@ const routes: Routes = [
   },
   {
     path: 'heroes',
-    component: HeroesComponent
+    component: HeroesComponent,
+    children: [
+      {
+        path: ':id',
+        component: MatchesComponent,
+        outlet: 'matches'
+      }
+    ]
+  },
+  {
+    path: 'matches',
+    component: MatchesComponent
   }
 ];
 
@@ -31,4 +43,4 @@ const routes: Routes = [
 })
 export class AppRoutingModule { }
 
-export const routedComponents = [DashboardComponent, HeroesComponent, HeroDetailComponent];
+export const routedComponents = [DashboardComponent, HeroesComponent, HeroDetailComponent, MatchesComponent];
